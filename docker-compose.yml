@@ -1,0 +1,18 @@
+version: '3'
+services:
+    redis:
+        container_name: "redis"
+        image: redis
+    db:
+        container_name: "postgres"
+        build: "./db"
+        ports:
+          - "5432:5432"
+    web:
+        container_name: "flask"
+        build: "./web"
+        ports:
+            - "5000:5000"
+        depends_on:
+            - redis
+            - db
