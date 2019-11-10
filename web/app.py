@@ -10,7 +10,7 @@ sticker = StockTicker(conn_on_init = True)
 
 @app.route('/')
 def hello():
-    return 'Hello bob!'
+    return 'Hello world!'
 
 @app.route('/populate')
 def populate_stock_price():
@@ -32,7 +32,7 @@ def get_cached_price():
     time  = redis.get("TIME").decode("utf-8") 
     price = redis.get("ABC").decode("utf-8") 
 
-    return "Latest price of ABC is {} USD as of {}".format(round(price, 2), time) 
+    return "Latest price of ABC is {} USD as of {}".format(round(float(price), 2), time) 
 
 
 if __name__ == '__main__':
